@@ -10,4 +10,4 @@ set -eu
 type biber >/dev/null 2>&1 || { echo "I require biber but it's not installed."; exit 1; }
 
 # check for differences after formatting with biber --tool
-biber --tool --quiet --quiet --output_align --output_resolve --output_file "$1" "$1"
+biber --tool --quiet --quiet --output-fieldcase=lower --output_align --output_resolve --output_file "$1" "$1"
