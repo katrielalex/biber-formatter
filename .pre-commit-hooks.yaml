@@ -7,7 +7,7 @@
     types: [text]
 -   id: biber-autoformat
     name: Reformatting bib files
-    entry: reformat-biber
+    entry: format-biber
     language: script
     files: '.+\.bib$'
     description: This hook uses Biber to reformat .bib files.
