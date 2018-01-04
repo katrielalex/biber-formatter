@@ -5,3 +5,10 @@
     files: '.+\.bib$'
     description: This hook uses Biber to check for incorrectly-formatted .bib files.
     types: [text]
+-   id: biber-autoformat
+    name: Reformatting bib files
+    entry: reformat-biber
+    language: script
+    files: '.+\.bib$'
+    description: This hook uses Biber to reformat .bib files.
+    types: [text]

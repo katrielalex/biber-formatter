@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -o pipefail
+set -eu
+
+[ -z "$1" ] && { echo "No argument supplied"; exit 1; }
+
+[ -f "$1" ] || { echo "$1 not found"; exit 1; }
+
+# check for biber
+type biber >/dev/null 2>&1 || { echo "I require biber but it's not installed."; exit 1; }
+
+# check for differences after formatting with biber --tool
+biber --tool --quiet --quiet --output_align --output_resolve --output_file "$1" "$1"
