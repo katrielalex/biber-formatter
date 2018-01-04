@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -o pipefail
+set -eu
+
+[ -z "$1" ] && { echo "No argument supplied"; exit 1; }
+
+[ -f "$1" ] || { echo "$1 not found"; exit 1; }
+
+# check for biber
+type biber >/dev/null 2>&1 || { echo "I require biber but it's not installed."; exit 1; }
+
+# check for differences after formatting with biber --tool
+biber --tool --quiet --quiet --output_align --output_resolve --output_file /dev/stdout "$1" |\
+    diff --brief - "$1" >/dev/null 2>&1
+
+# not necessary: set -e will cause exit 1 from the previous command anyway
+# [ $? -ne 0 ] && { echo "Files need fixing"; exit 1; } || exit 0;
+

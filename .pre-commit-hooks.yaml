@@ -1,0 +1,8 @@
+-   id: biber-format
+    name: Checking bib file formatting
+    entry: check-biber
+    entry: biber --tool --output_align --output_indent=2 --output_fieldcase=lower
+    language: system
+    files: '.+\.bib$'
+    description: This hook uses Biber to check for incorrectly-formatted .bib files.
+    types: [text]
